@@ -3,7 +3,6 @@ import json
 import re
 
 def inyectar_textos(directorio_base, json_path):
-    # Cargar el JSON con los mapeos
     with open(json_path, 'r', encoding='utf-8') as f:
         datos_mapeo = json.load(f)
 
@@ -21,7 +20,7 @@ def inyectar_textos(directorio_base, json_path):
 
         cambios_realizados = False
         
-        # Ordenamos por longitud descendente para evitar reemplazar subtramas incompletas
+        # Ordenamos por longitud descendente
         textos_ordenados = sorted(mapeo.keys(), key=len, reverse=True)
 
         for viejo in textos_ordenados:
@@ -29,16 +28,23 @@ def inyectar_textos(directorio_base, json_path):
             if viejo == nuevo:
                 continue
                 
-            # Escapar el texto viejo para la expresión regular
-            viejo_escapado = re.escape(viejo)
-            # Hacemos que cualquier espacio o salto de línea en el JSON coincida con la estructura del HTML
-            regex_str = viejo_escapado.replace(r'\ ', r'\s+')
-            regex_str = regex_str.replace(r'\n', r'\s+')
+            # EL TRUCO DEFINITIVO:
+            # 1. Dividimos el texto en palabras individuales (ignora espacios y saltos de línea)
+            palabras = viejo.split()
             
-            # Reemplazar en el HTML
-            nuevo_html = re.sub(regex_str, nuevo, html, count=1)
+            if not palabras:
+                continue
+                
+            # 2. Escapamos los caracteres especiales de cada palabra
+            palabras_escapadas = [re.escape(p) for p in palabras]
             
-            if nuevo_html != html:
+            # 3. Creamos una regla que busque esas palabras con CUALQUIER cantidad de espacios/saltos entre ellas
+            regex_str = r'\s+'.join(palabras_escapadas)
+            
+            # 4. Reemplazamos
+            nuevo_html, reemplazos = re.subn(regex_str, nuevo.replace('\\n', '\n'), html, count=1)
+            
+            if reemplazos > 0:
                 html = nuevo_html
                 cambios_realizados = True
 
@@ -50,7 +56,6 @@ def inyectar_textos(directorio_base, json_path):
             print(f"Sin cambios necesarios en: {archivo_relativo}")
 
 if __name__ == "__main__":
-    # Ejecuta el script apuntando a la carpeta actual y al archivo JSON
     print("Iniciando inyección de copywriting...")
     inyectar_textos('./', 'nuevo_contenido.json')
     print("Proceso finalizado.")
