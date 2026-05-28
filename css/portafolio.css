@@ -556,7 +556,7 @@ body.cursor-ready .magnify-cursor {
 ========================= */
 .zoom-wrapper {
     position: absolute;
-    top: 50%;
+    top: 57%;
     left: 50%;
     transform:
         translate(-50%, -50%)
@@ -570,9 +570,9 @@ body.cursor-ready .magnify-cursor {
 .horizontal-track {
     display: flex;
     align-items: center;
-    gap: 3vw;
-    padding-left: 18vw;
-    padding-right: 8vw;
+    gap: 1vw;
+    padding-left: 1vw;
+    padding-right: 27vw;
     will-change: transform;
 }
 /* =========================

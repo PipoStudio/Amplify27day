@@ -157,7 +157,7 @@
         clamp(3rem, 7vw, 8rem);
     font-weight: 900;
     letter-spacing: -0.08em;
-    text-transform: uppercase;
+    text-transform: none;
 }
 .loader-logo span {
     color: var(--peach);
