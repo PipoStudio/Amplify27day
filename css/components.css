@@ -13,33 +13,19 @@
 /* =========================================================
    CURSOR (MIX-BLEND-MODE Y CÍRCULO SÓLIDO)
 ========================================================= */
-/* =========================================================
-   CURSOR (MIX-BLEND-MODE Y CÍRCULO SÓLIDO)
-========================================================= */
-/* =========================================================
-   CUSTOM CURSOR
-========================================================= */
-
 .custom-cursor {
     position: fixed;
     top: 0;
     left: 0;
-
     width: 18px;
     height: 18px;
-
     border-radius: 50%;
-
     background: #ffffff;
-
     pointer-events: none;
-
     z-index: 999999;
-
     transform:
         translate(-50%, -50%)
         scale(1);
-
     will-change:
         transform,
         width,
@@ -47,7 +33,6 @@
         background,
         border,
         mix-blend-mode;
-
     transition:
         transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
         width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
@@ -55,82 +40,46 @@
         background 0.3s ease,
         border 0.3s ease,
         opacity 0.3s ease;
-
     mix-blend-mode: normal;
 }
-
-
 /* =========================================================
    MODO TEXTO / BOTONES
 ========================================================= */
-
 .custom-cursor.active {
-
     mix-blend-mode: difference;
-
     background: #ffffff;
-
     width: 18px;
     height: 18px;
-
     transform:
         translate(-50%, -50%)
         scale(var(--cursor-scale, 4));
 }
-
-
 /* =========================================================
    MODO IMAGEN / ZOOM
 ========================================================= */
-
-/* =========================================================
-   MODO IMAGEN / ZOOM
-========================================================= */
-
-/* =========================================================
-   IMAGE MODE
-========================================================= */
-
 .custom-cursor.zoom-mode {
-
     mix-blend-mode: normal;
-
     background: #ffffff;
-
     border: none;
-
     opacity: 1;
-
     transform:
         translate(-50%, -50%)
         scale(6);
 }
-
-
 /* =========================================================
    SMALL PLUS ICON
 ========================================================= */
-
 .custom-cursor.zoom-mode::before {
-
     content: "+";
-
     position: absolute;
-
     top: 50%;
     left: 50%;
-
     transform:
         translate(-50%, -50%);
-
     font-size: 0.7rem;
-
     font-weight: 400;
-
     color: #000000;
-
     line-height: 1;
-
     pointer-events: none;
 }
 /* =========================================================
@@ -583,12 +532,10 @@
 .custom-cursor.active {
     mix-blend-mode: difference;
 }
-
 /* Estilo para el modo imagen (lupa) */
 .custom-cursor.cursor-zoom {
     mix-blend-mode: normal; 
     border: 2px solid white; 
     background: rgba(255, 255, 255, 0.1);
 }
-
 /* Estilo p
