@@ -5,6 +5,43 @@
 /* =========================================================
    CONTAINER
 ========================================================= */
+
+/* =========================================================
+   LANGUAGE SWITCH
+========================================================= */
+.lang-switch {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: 1px solid rgba(13, 13, 13, 0.08);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--white);
+    background: transparent;
+    transition: var(--transition-smooth);
+    text-decoration: none;
+}
+
+.lang-switch:hover {
+    background: var(--black);
+    color: var(--white);
+    border-color: var(--black);
+}
+
+/* Ajuste para el modo oscuro en portafolio.html */
+body.producto-page .lang-switch {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+body.producto-page .lang-switch:hover {
+    background: var(--white);
+    color: var(--black);
+}
+
 .container {
     width: 100%;
     max-width: 1920px;

@@ -320,3 +320,59 @@ window.addEventListener('wheel', (e) => {
         }
     }
 }, { passive: false });
+
+
+
+
+
+
+// Asegurarnos de que el DOM esté listo antes de inyectar
+document.addEventListener('DOMContentLoaded', async () => {
+    await loadHeader(); // Usa await para que la ejecución se pause hasta que el header exista
+    
+    // Si tiene otras funciones de inicialización global (como el loader), llámalas aquí
+});
+
+async function loadHeader() {
+    const headerPlaceholder = document.getElementById('header-placeholder');
+    if (!headerPlaceholder) return;
+
+    // Detectamos si la URL actual contiene '/es/'
+    const isSpanish = window.location.pathname.includes('/es/');
+    const headerFile = isSpanish ? '/components/header_es.html' : '/components/header_en.html';
+
+    try {
+        const response = await fetch(headerFile);
+        headerPlaceholder.innerHTML = await response.text();
+
+        // 1. Dinamismo del botón de idioma (Calcula la ruta espejo exacta)
+        const langBtn = document.getElementById('langToggle');
+        if (langBtn) {
+            let currentPath = window.location.pathname;
+            // Estandarizar rutas vacías al index
+            if (currentPath === '/' || currentPath === '/es/') {
+                currentPath += 'index.html';
+            }
+
+            if (isSpanish) {
+                // Si esta en ES, quitamos el /es/ para volver al EN
+                langBtn.href = currentPath.replace('/es/', '/');
+            } else {
+                // Si estamos en EN, inyectamos /es/ al inicio
+                langBtn.href = '/es' + currentPath;
+            }
+        }
+
+        // 2. INICIALIZAR ANIMACIONES Y MENÚ MÓVIL
+        // Al usar 'await', ahora estamos 100% seguros de que el <header> ya existe en el DOM
+        if (typeof initHeaderBehavior === 'function') {
+            initHeaderBehavior();
+        }
+        
+        // Nota: Si hay una función separada que controla el clic del menú hamburguesa, 
+        // debe inicializarla aquí también.
+
+    } catch (error) {
+        console.error('Error inyectando el componente Header:', error);
+    }
+}
