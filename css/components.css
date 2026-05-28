@@ -576,3 +576,126 @@ body.producto-page .lang-switch:hover {
     background: rgba(255, 255, 255, 0.1);
 }
 /* Estilo p
+
+
+/* =========================================================
+   NUEVAS CUADRÍCULAS PARA PORTAFOLIO CLOUDINARY
+========================================================= */
+
+/* PROYECTO 01: AGAIN (6 Imágenes: 5 verticales, 1 panorámica) */
+.again-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+.again-grid .portfolio-image:nth-child(5) {
+    grid-column: span 2; /* La imagen ancha ocupa dos columnas */
+}
+
+/* PROYECTO 02: ALOHA (3 Imágenes altas) */
+.aloha-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+/* PROYECTO 03: OVNI (6 Imágenes cuadradas) */
+.ovni-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+/* PROYECTO 04: CONSOLA (5 Imágenes cuadradas) */
+.consola-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 2rem;
+}
+.consola-grid .portfolio-image:nth-child(1),
+.consola-grid .portfolio-image:nth-child(2) {
+    grid-column: span 3; /* Arriba: 2 imágenes, cada una de 3 columnas (mitad y mitad) */
+}
+.consola-grid .portfolio-image:nth-child(3),
+.consola-grid .portfolio-image:nth-child(4),
+.consola-grid .portfolio-image:nth-child(5) {
+    grid-column: span 2; /* Abajo: 3 imágenes, cada una de 2 columnas */
+}
+
+/* PROYECTO 05: WOMEN (3 Imágenes verticales) */
+.women-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+/* PROYECTO 06: CAFE (1 Imagen Masiva Vertical) */
+.cafe-grid {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.cafe-grid .portfolio-image {
+    width: 100%;
+    max-width: 800px; /* Limita el ancho para que no se vea gigantesca en PC */
+}
+
+/* PROYECTO 07: COSCAFE (4 Imágenes mixtas) */
+.coscafe-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+.coscafe-grid .portfolio-image:nth-child(3) {
+    grid-column: span 2; /* Imagen horizontal ancha */
+}
+
+/* COMPORTAMIENTO MÓVIL GENERAL PARA TODAS LAS NUEVAS GRIDS */
+@media (max-width: 768px) {
+    .again-grid, 
+    .aloha-grid, 
+    .ovni-grid, 
+    .consola-grid, 
+    .women-grid, 
+    .coscafe-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem;
+    }
+    .again-grid .portfolio-image,
+    .consola-grid .portfolio-image,
+    .coscafe-grid .portfolio-image {
+        grid-column: span 1 !important;
+    }
+}
+
+/* =========================================================
+   DESCRIPCIONES DE PROYECTOS (TARJETAS INDIVIDUALES)
+========================================================= */
+.project-description {
+    margin-top: 2.5rem; /* Separación elegante del grid de fotos */
+    max-width: 800px; /* Ancho máximo para que la lectura sea cómoda */
+    padding-left: 2rem; /* Sangría editorial */
+    border-left: 1px solid rgba(255, 255, 255, 0.15); /* Línea sutil a la izquierda */
+}
+
+.project-description p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.65); /* Texto ligeramente atenuado */
+    font-weight: 300;
+    margin: 0; /* Resetea márgenes por defecto */
+}
+
+/* =========================================================
+   AJUSTES MÓVILES PARA DESCRIPCIONES
+========================================================= */
+@media (max-width: 768px) {
+    .project-description {
+        padding-left: 1.2rem;
+        margin-top: 1.8rem;
+    }
+    
+    .project-description p {
+        font-size: 0.95rem;
+    }
+}
