@@ -319,7 +319,7 @@ function initImmersiveSlider() {
         });
     }
     /* =========================
-       WHEEL
+        WHEEL
     ========================= */
     window.addEventListener(
         "wheel",
@@ -327,13 +327,13 @@ function initImmersiveSlider() {
         { passive: false }
     );
     /* =========================
-       HANDLE
+        HANDLE
     ========================= */
     function handleWheel(e) {
         const body =
             document.body;
         /* =====================
-           VERTICAL MODE
+        VERTICAL MODE
         ===================== */
         if (
             body.classList.contains(
@@ -346,9 +346,9 @@ function initImmersiveSlider() {
         const delta =
             e.deltaY;
                     /* =================================================
-           STATE — ZOOM
+            STATE — ZOOM
         ================================================= */
-        if (
+        if (    
             currentState === STATES.ZOOM
         ) {
             targetScale +=
@@ -360,7 +360,7 @@ function initImmersiveSlider() {
                     MAX_SCALE
                 );
             /* =============================================
-               ENTER HORIZONTAL
+            ENTER HORIZONTAL
             ============================================= */
             if (
                 targetScale >= MAX_SCALE
@@ -371,7 +371,7 @@ function initImmersiveSlider() {
                     STATES.HORIZONTAL;
             }
             /* =============================================
-               LIMIT
+                LIMIT
             ============================================= */
             if (
                 targetScale <= MIN_SCALE
@@ -511,9 +511,9 @@ function initFooterUnlock() {
         () => {
             const body =
                 document.body;
-            /* =====================
-               ENABLE VERTICAL
-            ===================== */
+    /* =====================
+        ENABLE VERTICAL
+    ===================== */
             body.classList.remove(
                 "horizontal-mode"
             );

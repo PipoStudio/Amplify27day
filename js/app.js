@@ -49,7 +49,7 @@ function initCursor() {
         cursor.style.transform =
             `translate(-50%, -50%) scale(${currentScale})`;
         /* ==========================================
-           MAGNIFIER POSITION
+        MAGNIFIER POSITION
         ========================================== */
         if (activeImage) {
             const rect = activeImage.getBoundingClientRect();
@@ -100,7 +100,7 @@ function initCursor() {
             }
         });
         /* ==========================================
-           MAGNETISM
+        MAGNETISM
         ========================================== */
         if (
             el.classList.contains('primary-button') ||
@@ -187,12 +187,12 @@ function initCursor() {
 function initLoader() {
     const loader = document.querySelector(".site-loader");
     if (!loader) return;
-    // Si ya vio la animación en esta sesión, la ocultamos instantáneamente
+    // Si ya vio la animación en esta sesión, se ocultará instantáneamente
     if (sessionStorage.getItem('loader-viewed')) {
         loader.style.display = 'none';
         return;
     }
-    // Si es la primera vez, mostramos y marcamos como visto
+    // Si es la primera vez, muestra y marca como visto
     window.addEventListener('load', () => {
         loader.classList.add("hidden");
         sessionStorage.setItem('loader-viewed', 'true');
@@ -218,7 +218,7 @@ function initPageTransitions() {
                     loader.classList.remove("hidden");
                 }
                 
-                // Esperar a que la animación termine antes de navegar
+                // Espera a que la animación termine antes de navegar
                 setTimeout(() => {
                     window.location.href = href;
                 }, 800); // Ajusta según la duración de la animación de salida
@@ -303,7 +303,7 @@ window.addEventListener('wheel', (e) => {
         
         // Aplicar a tu Card principal
         document.querySelector('.card-principal').style.transform = `scale(${currentScale})`;
-        e.preventDefault(); // Evitamos que la página haga scroll normal
+        e.preventDefault(); // Evita que la página haga scroll normal
     } else if (scrollState === 'slider') {
         // Lógica de Slider Horizontal
         sliderPosition += e.deltaY;
